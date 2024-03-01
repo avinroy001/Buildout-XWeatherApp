@@ -12,15 +12,19 @@ function App() {
     axios.get(`https://api.weatherapi.com/v1/current.json?key=334d83b451464990bd675258233112&q=${v}`)
     .then((res)=>{setApiData(res.data)})
     .catch((err)=>{console.log(err)
-    alert("Failed to fetch weather data")})
+    alert("Failed to fetch weather data");
+      
+    })
     .finally(()=>{
       setIsLoad(false);
     });
   }
   
-  const call=()=>{
+  const call=(event)=>{
+    event.stopPropagation();
     api(val);
     setState(true);
+
   }
   console.log(apiData);
   return (
@@ -31,9 +35,9 @@ function App() {
         }}/>
         <button onClick={call}>Search</button>
       </div>
-      {isLoad&&<p>Loading data...</p>}
+      {isLoad&&<p className='load'>Loading data...</p>}
       {!isLoad && state && (
-      <div className='data4'>
+      <div className='weather-card'>
         <div className='data'>
           <h3>Temperature</h3>
           <p>{apiData.current?.temp_c}&deg;C</p>
