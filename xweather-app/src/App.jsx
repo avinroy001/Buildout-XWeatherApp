@@ -37,20 +37,20 @@ function App() {
       </div>
       {isLoad&&<p className='load'>Loading data...</p>}
       {!isLoad && state && (
-      <div className='weather-card'>
-        <div className='data'>
+      <div className='weather-cards'>
+        <div className='weather-card'>
           <h3>Temperature</h3>
           <p>{apiData.current?.temp_c}&deg;C</p>
          </div>
-        <div className='data'>
+        <div className='weather-card'>
           <h3>Humidity</h3>
           <p>{apiData.current?.humidity}%</p>
           </div>
-        <div className='data'>
+        <div className='weather-card'>
           <h3>Condition</h3>
           <p>{apiData.current?.condition?.text}</p>
           </div>
-        <div className='data'>
+        <div className='weather-card'>
         <h3>Wind Speed</h3>
           <p>{apiData.current?.wind_kph} kph</p>
           </div>
